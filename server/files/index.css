@@ -35,7 +35,34 @@ header h1 {
 
 nav {
   grid-area: n;
-  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 240px;
+  height: 100vh;
+  padding: 20px;
+  background: #1e293b;
+  transition: left 0.3s ease;
+  z-index: 100;
+  overflow-y: auto;
+}
+
+nav.open {
+  left: 0;
+}
+
+#close-nav {
+  background: transparent;
+  color: #e5e7eb;
+  font-size: 1.2rem;
+  padding: 4px 10px;
+  border-radius: 8px;
+  width: auto;
+}
+
+#close-nav:hover {
+  background: rgba(255,255,255,0.1);
+  transform: none;
 }
 
 main {
@@ -71,7 +98,18 @@ footer {
   }
 
   nav {
+    position: static;
+    height: auto;
+    width: auto;
     overflow-y: auto;
+  }
+
+  #menu-toggle {
+    display: none;
+  }
+
+  #close-nav {
+    display: none;
   }
 }
 

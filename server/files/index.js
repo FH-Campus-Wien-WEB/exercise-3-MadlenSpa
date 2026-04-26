@@ -172,6 +172,16 @@ function loadMovies(genre) {
 }
 
 window.onload = function () {
+  const sidebar = document.getElementById("sidebar");
+
+  document.getElementById("menu-toggle").onclick = function () {
+    sidebar.classList.add("open");
+  };
+
+  document.getElementById("close-nav").onclick = function () {
+    sidebar.classList.remove("open");
+  };
+
   const xhr = new XMLHttpRequest();
   xhr.onload = function () {
     const listElement = document.querySelector("nav ul");
@@ -198,6 +208,7 @@ window.onload = function () {
 
         button.onclick = function () {
           loadMovies(genre);
+          sidebar.classList.remove("open");
         };
 
         listItem.append(button);
