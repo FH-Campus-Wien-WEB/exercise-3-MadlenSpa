@@ -25,8 +25,14 @@ app.get('/genres', function (req, res) {
  */
 app.get('/movies', function (req, res) {
   let movies = Object.values(movieModel)
-  res.send(movies);
-})
+
+  if (req.query.genre) {
+    movies = movies.filter(function (movie) {
+      return movie.Genres.includes(req.query.genre);
+    });
+  }
+  res.json(movies);
+});
 
 // Configure a 'get' endpoint for a specific movie
 app.get('/movies/:imdbID', function (req, res) {
@@ -36,7 +42,7 @@ app.get('/movies/:imdbID', function (req, res) {
   if (exists) {
     res.send(movieModel[id])
   } else {
-    res.sendStatus(404)    
+    res.sendStatus(404)
   }
 })
 
